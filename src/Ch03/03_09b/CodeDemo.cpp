@@ -1,11 +1,10 @@
-// Learning C++ 
-// Exercise 03_09
-// Vectors, by Eduardo Corpeño 
+// PROGRAMA 16
 
 #include <iostream>
-#include <string>
+#include <vector>
 
 int main(){
+    
     
     std::cout << std::endl << std::endl;
     return (0);
