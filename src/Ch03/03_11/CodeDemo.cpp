@@ -1,5 +1,5 @@
 // Learning C++ 
-// Challenge 03_11 - PROGRAMA 18
+// Challenge 03_11 - PROGRAMA 18_again
 // Create some classes, by Eduardo Corpeño 
 
 #include <iostream>
