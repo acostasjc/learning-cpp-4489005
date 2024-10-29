@@ -47,14 +47,25 @@ int main(){
             credits += courses[j].get_credits();
             points += num_grd * courses[j].get_credits();
         }
-    GPA = points / credits;
-
-    std::string student_str;
+    
+    
     int i = 0;
     while (i < students.size() && students[i].get_id() != id)
         i++;
-    student_str = students[i].get_name();
-    std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+    
+    if (i < students.size())
+    { 
+        std::string student_str;
+
+        GPA = points / credits;
+        
+        student_str = students[i].get_name();
+        std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+    }
+    else
+    {
+        std::cout << "Invalid Student ID" << std::endl;
+    }
     
     std::cout << std::endl << std::endl;
     return (0);
