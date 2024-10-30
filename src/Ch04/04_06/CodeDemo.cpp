@@ -9,6 +9,7 @@
 int main(){
     float GPA = 0.0f;
     int id;
+    bool flag = false;
 
     std::vector<Student> students = {Student(1, "George P. Burdell"),
                                     Student(2, "Nancy Rhodes")};
@@ -20,6 +21,10 @@ int main(){
 
     std::vector<Grade> grades = {Grade(1, 1, 'B'), Grade(1, 2, 'A'), Grade(1, 3, 'C'),
                                 Grade(2, 1, 'A'), Grade(2, 2, 'A'), Grade(2, 4, 'B')};
+
+
+    //std::vector<Grade> grades = {Grade(1, 1, 'B'), Grade(1, 2, 'A'), Grade(1, 3, 'C'),
+    //                            Grade(2, 0, 'A'), Grade(2, 2, 'A'), Grade(2, 4, 'B')};
 
     std::cout << "Enter a student ID: " << std::flush;
     std::cin >> id;
@@ -44,8 +49,18 @@ int main(){
             int j=0;
             while (j < courses.size()  &&  courses[j].get_id() != grd.get_course_id())
                 j++;
-            credits += courses[j].get_credits();
-            points += num_grd * courses[j].get_credits();
+            if (j < courses.size())
+            {
+                flag = false;
+                credits += courses[j].get_credits();
+                points += num_grd * courses[j].get_credits();
+            }
+            else
+            {
+                flag = true;
+                break;
+            }
+
         }
     
     
@@ -55,12 +70,19 @@ int main(){
     
     if (i < students.size())
     { 
-        std::string student_str;
+        if (flag == false)
+        {
+            std::string student_str;
 
-        GPA = points / credits;
-        
-        student_str = students[i].get_name();
-        std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+            GPA = points / credits;
+            
+            student_str = students[i].get_name();
+            std::cout << "The GPA for " << student_str << " is " << GPA << std::endl;
+        }
+        else
+        {
+            std::cout << "Invalid Course ID" << std::endl;
+        }    
     }
     else
     {
